@@ -9,13 +9,14 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 
-	"botgolang/internal/player"
+	"github.com/disgoorg/disgolink/v4/disgolink"
 )
 
-// Bot — обёртка над сессией discordgo и менеджером проигрывателей.
+// Bot — обёртка над сессией discordgo и клиентом Lavalink.
 type Bot struct {
-	session *discordgo.Session
-	manager *player.Manager
+	session  *discordgo.Session
+	lavalink *disgolink.Client // nil, если Lavalink недоступен (музыка отключается)
+	queues   *queueManager
 }
 
 // New создаёт бота и навешивает обработчики (но ещё не подключается).
@@ -25,19 +26,28 @@ func New(token string) (*Bot, error) {
 		return nil, err
 	}
 
-	// Интенты: серверы, голосовые состояния (нужно для поиска канала юзера),
-	// сообщения и их содержимое (для текстовой команды !ping).
+	// TrackVoice нужен, чтобы знать, в каком голосовом канале пользователь.
+	s.State.TrackVoice = true
+
+	// Интенты: серверы, голосовые состояния (для музыки), сообщения и их
+	// содержимое (для команды !ping).
 	s.Identify.Intents = discordgo.IntentsGuilds |
 		discordgo.IntentsGuildVoiceStates |
 		discordgo.IntentsGuildMessages |
 		discordgo.IntentMessageContent
 
-	b := &Bot{session: s, manager: player.NewManager()}
+	b := &Bot{
+		session: s,
+		queues:  newQueueManager(),
+	}
 
 	s.AddHandler(b.onReady)
 	s.AddHandler(b.onGuildCreate)
 	s.AddHandler(b.onMessage)
 	s.AddHandler(b.onInteraction)
+	// Проброс голосовых событий в Lavalink.
+	s.AddHandler(b.onVoiceStateUpdate)
+	s.AddHandler(b.onVoiceServerUpdate)
 
 	return b, nil
 }
@@ -48,6 +58,14 @@ func (b *Bot) Run() error {
 		return err
 	}
 	defer b.session.Close()
+
+	// Подключаемся к Lavalink. Если сервер не запущен — музыка просто будет
+	// недоступна, а остальные команды продолжат работать.
+	if err := b.setupLavalink(); err != nil {
+		log.Printf("⚠️  Lavalink не подключён (%v) — музыкальные команды недоступны, остальное работает", err)
+	} else {
+		log.Println("✅ Lavalink подключён — музыка доступна")
+	}
 
 	log.Println("бот работает. Нажми Ctrl+C для выхода.")
 

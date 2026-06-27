@@ -10,3 +10,8 @@ botgolang.exe
 # Файлы IDE
 .idea/
 .vscode/
+
+# Lavalink: тяжёлый jar и скачиваемые им файлы (конфиг application.yml оставляем)
+lavalink/Lavalink.jar
+lavalink/plugins/
+lavalink/logs/

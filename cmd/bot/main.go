@@ -5,10 +5,16 @@ import (
 	"log"
 	"os"
 
+	"github.com/joho/godotenv"
+
 	"botgolang/internal/bot"
 )
 
 func main() {
+	// Подхватываем переменные из .env, если файл есть (для локального запуска).
+	// В git файл .env не попадает — он в .gitignore.
+	_ = godotenv.Load()
+
 	token := os.Getenv("DISCORD_TOKEN")
 	if token == "" {
 		log.Fatal("не задан DISCORD_TOKEN (переменная окружения с токеном бота)")
