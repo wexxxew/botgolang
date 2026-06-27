@@ -142,6 +142,13 @@ go run ./cmd/bot      # запуск
 
 ---
 
+## 📄 Документы
+
+- [Условия использования (Terms of Service)](TERMS_OF_SERVICE.md)
+- [Политика конфиденциальности (Privacy Policy)](PRIVACY_POLICY.md)
+
+---
+
 <div align="center">
 Сделано с ❤️ на Go · discordgo
 </div>
