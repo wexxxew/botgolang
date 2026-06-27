@@ -25,7 +25,9 @@ func lavalinkAddress() string {
 	if a := os.Getenv("LAVALINK_ADDRESS"); a != "" {
 		return a
 	}
-	return "localhost:2333"
+	// Именно 127.0.0.1, а не localhost: иначе Windows может увести в IPv6 (::1),
+	// где Lavalink (слушает IPv4 0.0.0.0) недоступен.
+	return "127.0.0.1:2333"
 }
 
 func lavalinkPassword() string {
