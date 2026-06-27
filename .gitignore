@@ -1,0 +1,12 @@
+# Скомпилированные бинарники
+/bin/
+botgolang
+botgolang.exe
+*.exe
+
+# Секреты / локальное окружение
+.env
+
+# Файлы IDE
+.idea/
+.vscode/
