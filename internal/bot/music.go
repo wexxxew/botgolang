@@ -42,6 +42,9 @@ func lavalinkPassword() string {
 func (b *Bot) setupLavalink() error {
 	client := disgolink.New(snowflake.MustParse(b.session.State.User.ID),
 		disgolink.WithListenerFunc(b.onTrackEnd),
+		disgolink.WithListenerFunc(b.onTrackException),
+		disgolink.WithListenerFunc(b.onTrackStuck),
+		disgolink.WithListenerFunc(b.onWebSocketClosed),
 	)
 
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
@@ -82,6 +85,19 @@ func (b *Bot) onVoiceServerUpdate(s *discordgo.Session, e *discordgo.VoiceServer
 		return
 	}
 	b.lavalink.OnVoiceServerUpdate(context.TODO(), snowflake.MustParse(e.GuildID), e.Token, e.Endpoint)
+}
+
+// Логируем проблемы воспроизведения — помогает понять, почему «тишина».
+func (b *Bot) onTrackException(e *disgolink.PlayerTrackExceptionEvent) {
+	log.Printf("⚠️  ошибка трека: %+v", e)
+}
+
+func (b *Bot) onTrackStuck(e *disgolink.PlayerTrackStuckEvent) {
+	log.Printf("⚠️  трек завис (нет данных): %+v", e)
+}
+
+func (b *Bot) onWebSocketClosed(e *disgolink.PlayerWebSocketClosedEvent) {
+	log.Printf("⚠️  голосовое соединение закрыто: %+v", e)
 }
 
 // onTrackEnd автоматически запускает следующий трек из очереди.
