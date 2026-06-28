@@ -2,58 +2,63 @@
 
 # 🎵 botgolang
 
-### Универсальный Discord-бот на Go — музыка, модерация и развлечения в одном
-
-*Лёгкий · быстрый · без cgo · с настоящим воспроизведением музыки через Lavalink*
+### Многофункциональный Discord-бот на Go
+**Музыка · Модерация · Развлечения — всё в одном, быстро и без лишнего**
 
 <br/>
 
-![Go](https://img.shields.io/badge/Go-1.25-00ADD8?style=for-the-badge&logo=go&logoColor=white)
-![discordgo](https://img.shields.io/badge/discordgo-v0.29-5865F2?style=for-the-badge&logo=discord&logoColor=white)
-![Lavalink](https://img.shields.io/badge/Lavalink-v4-FB7299?style=for-the-badge)
-![License](https://img.shields.io/badge/CGO-disabled-success?style=for-the-badge)
+[![Go](https://img.shields.io/badge/Go-1.25-00ADD8?style=for-the-badge&logo=go&logoColor=white)](https://go.dev)
+[![discordgo](https://img.shields.io/badge/discordgo-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://github.com/bwmarrin/discordgo)
+[![Lavalink](https://img.shields.io/badge/Lavalink_v4-FB7299?style=for-the-badge)](https://lavalink.dev)
+[![Java](https://img.shields.io/badge/Java_17%2B-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://adoptium.net)
+
+![Status](https://img.shields.io/badge/статус-активно-success?style=flat-square)
+![CGO](https://img.shields.io/badge/CGO-disabled-blue?style=flat-square)
+![Platform](https://img.shields.io/badge/Windows_·_Linux-lightgrey?style=flat-square)
+![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)
+
+<br/>
+
+*Лёгкий, быстрый и аккуратный бот, который оживляет твой сервер:
+ставит музыку в голосовых каналах, помогает модераторам и развлекает участников —
+всё через понятные слэш-команды.*
+
+⭐ **Нравится? Поставь звезду — это лучшая мотивация развивать проект!**
 
 </div>
 
 ---
 
-<div align="center">
-
-**botgolang** превращает твой сервер в живое место: ставит музыку с YouTube в голосовых
-каналах, помогает модераторам наводить порядок и развлекает участников — всё через
-понятные слэш-команды.
-
-</div>
-
----
-
-## 🌟 Возможности
+## 🌟 Почему botgolang
 
 <table>
 <tr>
-<td width="33%" valign="top">
+<td width="33%" valign="top" align="center">
 
 ### 🎵 Музыка
-Воспроизведение с YouTube, SoundCloud и др. прямо в голосовом канале.
-Очередь треков, пауза, пропуск — всё на месте.
+Воспроизведение с **YouTube, SoundCloud** и других источников прямо в голосовом канале. Очередь, пауза, пропуск — всё на месте.
 
 </td>
-<td width="33%" valign="top">
+<td width="33%" valign="top" align="center">
 
 ### 🛡️ Модерация
-Кик, бан, тайм-аут и массовая очистка сообщений.
-Команды видны только тем, у кого есть права.
+**Кик, бан, тайм-аут** и массовая очистка чата. Команды видят только те, у кого есть права — порядок без хаоса.
 
 </td>
-<td width="33%" valign="top">
+<td width="33%" valign="top" align="center">
 
 ### 🎉 Развлечения
-Кубики, монетка, магический шар, опросы и карточки с инфо
-о пользователе и сервере.
+**Кубики, монетка, магический шар, опросы** и красивые карточки с инфо о пользователе и сервере.
 
 </td>
 </tr>
 </table>
+
+<div align="center">
+
+**⚡ Быстрый** · **🪶 Лёгкий** (один бинарник, без cgo) · **🧩 Понятный код** · **🔓 Открытый исходник**
+
+</div>
 
 ---
 
@@ -62,7 +67,9 @@
 <details open>
 <summary><b>🎵 Музыка</b></summary>
 
-| Команда | Описание |
+<br/>
+
+| Команда | Что делает |
 | :--- | :--- |
 | `/play <ссылка/название>` | Играть трек или добавить в очередь |
 | `/skip` | Пропустить текущий трек |
@@ -75,28 +82,32 @@
 <details open>
 <summary><b>🎉 Развлечения и информация</b></summary>
 
-| Команда | Описание |
+<br/>
+
+| Команда | Что делает |
 | :--- | :--- |
 | `/ping` · `!ping` | Проверка отклика |
-| `/roll [sides]` | Бросить кубик |
+| `/roll [грани]` | Бросить кубик |
 | `/8ball <вопрос>` | Магический шар предскажет ответ |
 | `/coinflip` | Подбросить монетку |
-| `/avatar [user]` | Показать аватар |
-| `/userinfo [user]` | Карточка пользователя |
+| `/avatar [@юзер]` | Показать аватар |
+| `/userinfo [@юзер]` | Карточка пользователя |
 | `/serverinfo` | Карточка сервера |
-| `/poll <вопрос>` | Опрос с реакциями ✅/❌ |
+| `/poll <вопрос>` | Опрос с реакциями ✅ / ❌ |
 
 </details>
 
 <details open>
-<summary><b>🛡️ Модерация</b> <i>(только для тех, у кого есть права)</i></summary>
+<summary><b>🛡️ Модерация</b> <i>— видна только тем, у кого есть права</i></summary>
 
-| Команда | Описание |
+<br/>
+
+| Команда | Что делает |
 | :--- | :--- |
-| `/clear <count>` | Удалить последние сообщения (1–100) |
-| `/kick <user> [reason]` | Выгнать участника |
-| `/ban <user> [reason]` | Забанить участника |
-| `/timeout <user> <minutes> [reason]` | Выдать тайм-аут |
+| `/clear <кол-во>` | Удалить последние сообщения (1–100) |
+| `/kick <@юзер> [причина]` | Выгнать участника |
+| `/ban <@юзер> [причина]` | Забанить участника |
+| `/timeout <@юзер> <минуты> [причина]` | Выдать тайм-аут |
 
 </details>
 
@@ -104,55 +115,42 @@
 
 ## 🧠 Как устроена музыка
 
-С марта 2026 Discord требует сквозное шифрование голоса (**DAVE / E2EE**), которое
-библиотека `discordgo` пока не поддерживает. Поэтому звук отдаём **Lavalink** —
-отдельному аудио-серверу (Java), умеющему DAVE. Бот лишь командует им по сети.
+Современный Discord шифрует голос «из конца в конец» (протокол **DAVE/E2EE**).
+botgolang решает это элегантно: звук обрабатывает **Lavalink** — мощный аудио-сервер,
+а бот лишь дирижирует им по сети. Чисто, надёжно и масштабируемо.
 
 ```mermaid
 flowchart LR
-    A["🤖 Go-бот<br/>discordgo + disgolink"] -->|команды| B["🎛️ Lavalink v4<br/>(умеет DAVE)"]
-    B -->|качает звук| C["▶️ YouTube /<br/>SoundCloud / …"]
-    B -->|🔒 E2EE-голос| D["🎧 Голосовой канал"]
+    A["🤖 botgolang<br/>Go · discordgo · disgolink"] -->|команды| B["🎛️ Lavalink v4<br/>E2EE / DAVE"]
+    B -->|берёт звук| C["▶️ YouTube · SoundCloud · …"]
+    B -->|🔒 шифрованный голос| D["🎧 Голосовой канал"]
 ```
 
-Чистая архитектура: discordgo отправляет лишь «зайти в канал» через gateway, а само
-шифрованное голосовое соединение и воспроизведение берёт на себя Lavalink. Бонус —
-весь Go-код собирается **без cgo** (`CGO_ENABLED=0`).
+> 💡 Вся логика на **Go** собирается в один бинарник **без cgo** (`CGO_ENABLED=0`) —
+> разворачивается где угодно за секунды.
 
 ---
 
-## 📁 Структура проекта
+## 🛠️ Технологии
 
-```
-botgolang/
-├── cmd/bot/main.go         # точка входа: грузит .env, запускает бота
-├── internal/bot/
-│   ├── bot.go              # сессия, интенты, подключение к Lavalink
-│   ├── commands.go         # описание слэш-команд
-│   ├── handlers.go         # маршрутизация + помощники ответов
-│   ├── music.go            # музыка: Lavalink, очередь, /play и др.
-│   ├── fun.go              # развлечения и информация
-│   └── moderation.go       # модерация
-├── lavalink/
-│   └── application.yml     # конфиг Lavalink (jar качается отдельно)
-├── .env.example
-└── README.md
-```
-
-> Раскладка `cmd/` + `internal/` — стандартная для Go: каждый пакет отвечает за свой слой.
+| Слой | Технология |
+| :--- | :--- |
+| Язык | **Go 1.25** |
+| Discord API | [discordgo](https://github.com/bwmarrin/discordgo) |
+| Аудио / голос | [Lavalink v4](https://lavalink.dev) + [disgolink](https://github.com/disgoorg/disgolink) |
+| Конфиг | `.env` через [godotenv](https://github.com/joho/godotenv) |
 
 ---
 
-## 🚀 Быстрый старт
+## 🚀 Установка
 
 ### 1. Требования
 - **Go 1.25+**
-- **Java 17+** (для Lavalink)
-- **Lavalink.jar** в папку `lavalink/` — [скачать из релизов](https://github.com/lavalink-devs/Lavalink/releases)
+- **Java 17+** (для Lavalink) и `Lavalink.jar` из [релизов](https://github.com/lavalink-devs/Lavalink/releases) — положить в папку `lavalink/`
 
 ### 2. Токен
-В [Developer Portal](https://discord.com/developers/applications) включи
-**MESSAGE CONTENT INTENT** и пригласи бота (scopes `bot` + `applications.commands`,
+В [Discord Developer Portal](https://discord.com/developers/applications) включи
+**MESSAGE CONTENT INTENT** и пригласи бота (scopes `bot` + `applications.commands`;
 права `Connect`, `Speak`, `Send Messages`). Создай файл `.env`:
 
 ```dotenv
@@ -161,19 +159,38 @@ DISCORD_TOKEN=твой_токен
 
 ### 3. Запуск — два процесса
 
-```powershell
-# Терминал 1 — музыкальный сервер
-cd lavalink
-java -jar Lavalink.jar      # ждём "Lavalink is ready to accept connections."
+```bash
+# 1) Музыкальный сервер
+cd lavalink && java -jar Lavalink.jar      # ждём "Lavalink is ready"
 
-# Терминал 2 — сам бот
-go run ./cmd/bot            # ждём "✅ Lavalink подключён — музыка доступна"
+# 2) Сам бот
+go run ./cmd/bot                           # ждём "✅ Lavalink подключён"
 ```
 
-Готово — заходи в голосовой канал и пиши `/play <название>` 🎶
+Заходи в голосовой канал и пиши `/play <название>` 🎶
 
-> 💡 Lavalink не запущен? Бот всё равно работает — просто музыкальные команды
-> скажут, что музыка недоступна. Все остальные команды доступны всегда.
+> Без Lavalink бот тоже работает — просто музыкальные команды скажут, что музыка
+> недоступна. Все остальные команды доступны всегда.
+
+---
+
+## ☁️ Хостинг 24/7 (рекомендуется для музыки)
+
+Для **стабильной музыки и работы без твоего ПК** разверни бота на **VPS** —
+лучше всего в регионе с прямым доступом к Discord (ЕС, например Германия/Нидерланды).
+Там Lavalink стоит рядом с открытыми голосовыми серверами Discord, и звук идёт
+напрямую — **работает идеально и круглосуточно**.
+
+```
+[ VPS (Linux) ]
+   ├── Lavalink.jar      # java -jar Lavalink.jar
+   └── botgolang         # ./bot
+```
+
+> ℹ️ **Локально голос может не проходить**, если у сети ограничен доступ к голосовым
+> серверам Discord (UDP). Все текстовые команды при этом работают где угодно, а
+> музыка раскрывается в полную силу на нормальном хостинге. Docker-развёртывание —
+> в планах (см. ниже).
 
 ---
 
@@ -182,31 +199,50 @@ go run ./cmd/bot            # ждём "✅ Lavalink подключён — му
 | Переменная | Обязательна | По умолчанию | Назначение |
 | :--- | :---: | :--- | :--- |
 | `DISCORD_TOKEN` | ✅ | — | Токен бота |
-| `LAVALINK_ADDRESS` | — | `localhost:2333` | Адрес сервера Lavalink |
+| `LAVALINK_ADDRESS` | — | `127.0.0.1:2333` | Адрес сервера Lavalink |
 | `LAVALINK_PASSWORD` | — | `youshallnotpass` | Пароль Lavalink |
 
 ---
 
-## 🛠️ Разработка
+## 🗺️ Планы
 
-```powershell
-go build ./...     # сборка
-go vet ./...       # статический анализ
-go run ./cmd/bot   # запуск
+- [ ] 🐳 Docker / docker-compose (бот + Lavalink в один клик)
+- [ ] 🔊 Громкость, `/loop`, `/shuffle`
+- [ ] 📝 Реальные названия треков в очереди
+- [ ] 🎚️ Аудио-фильтры (бас-буст и др.)
+- [ ] 🌐 Интерфейс на нескольких языках
+
+---
+
+## 🤝 Вклад
+
+PR и идеи приветствуются! Форкай, экспериментируй, открывай issue.
+Структура простая и разбита по слоям — разобраться легко.
+
+```
+botgolang/
+├── cmd/bot/main.go         # точка входа
+├── internal/bot/           # сессия, команды, обработчики
+│   ├── bot.go · commands.go · handlers.go
+│   ├── music.go · fun.go · moderation.go
+└── lavalink/application.yml # конфиг Lavalink
 ```
 
 ---
 
 ## 📄 Документы
 
-- 📜 [Условия использования (Terms of Service)](TERMS_OF_SERVICE.md)
-- 🔒 [Политика конфиденциальности (Privacy Policy)](PRIVACY_POLICY.md)
+- 📜 [Условия использования](TERMS_OF_SERVICE.md)
+- 🔒 [Политика конфиденциальности](PRIVACY_POLICY.md)
 
 ---
 
 <div align="center">
 
 **Сделано с ❤️ на Go**
+
 `discordgo` · `disgolink` · `Lavalink`
+
+⭐ *Если проект понравился — поставь звезду!*
 
 </div>
