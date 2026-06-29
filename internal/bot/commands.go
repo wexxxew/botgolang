@@ -89,6 +89,17 @@ var Commands = []*discordgo.ApplicationCommand{
 			},
 		},
 	},
+	{
+		Name:        "vote",
+		Description: "Голосование с вариантами — люди выбирают реакцией",
+		Options: []*discordgo.ApplicationCommandOption{
+			{Type: discordgo.ApplicationCommandOptionString, Name: "question", Description: "Вопрос голосования", Required: true},
+			{Type: discordgo.ApplicationCommandOptionString, Name: "option1", Description: "Вариант 1", Required: true},
+			{Type: discordgo.ApplicationCommandOptionString, Name: "option2", Description: "Вариант 2", Required: true},
+			{Type: discordgo.ApplicationCommandOptionString, Name: "option3", Description: "Вариант 3 (необязательно)", Required: false},
+			{Type: discordgo.ApplicationCommandOptionString, Name: "option4", Description: "Вариант 4 (необязательно)", Required: false},
+		},
+	},
 
 	// --- Модерация (видны только тем, у кого есть права) ---
 	{

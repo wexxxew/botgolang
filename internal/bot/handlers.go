@@ -38,6 +38,8 @@ func (b *Bot) onInteraction(s *discordgo.Session, i *discordgo.InteractionCreate
 		b.handleServerinfo(s, i)
 	case "poll":
 		b.handlePoll(s, i)
+	case "vote":
+		b.handleVote(s, i)
 	case "clear":
 		b.handleClear(s, i)
 	case "kick":

@@ -3,9 +3,13 @@ package bot
 import (
 	"fmt"
 	"math/rand/v2"
+	"strings"
 
 	"github.com/bwmarrin/discordgo"
 )
+
+// Эмодзи-цифры для вариантов голосования.
+var voteEmojis = []string{"1️⃣", "2️⃣", "3️⃣", "4️⃣"}
 
 const colorBlurple = 0x5865F2
 
@@ -134,6 +138,40 @@ func (b *Bot) handlePoll(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	if msg, err := s.InteractionResponse(i.Interaction); err == nil {
 		_ = s.MessageReactionAdd(msg.ChannelID, msg.ID, "✅")
 		_ = s.MessageReactionAdd(msg.ChannelID, msg.ID, "❌")
+	}
+}
+
+func (b *Bot) handleVote(s *discordgo.Session, i *discordgo.InteractionCreate) {
+	opt := optionMap(i)
+	question := opt["question"].StringValue()
+
+	// Собираем варианты (option1..option4), сколько задано.
+	var options []string
+	for _, name := range []string{"option1", "option2", "option3", "option4"} {
+		if o, ok := opt[name]; ok {
+			options = append(options, o.StringValue())
+		}
+	}
+
+	// Описание со списком вариантов и эмодзи-цифрами.
+	var desc strings.Builder
+	for idx, label := range options {
+		desc.WriteString(fmt.Sprintf("%s  %s\n", voteEmojis[idx], label))
+	}
+
+	embed := &discordgo.MessageEmbed{
+		Title:       "🗳️ " + question,
+		Description: desc.String(),
+		Color:       colorBlurple,
+		Footer:      &discordgo.MessageEmbedFooter{Text: "Голосуй реакцией ниже 👇"},
+	}
+	respondEmbed(s, i, embed)
+
+	// Добавляем реакцию-цифру под каждый вариант.
+	if msg, err := s.InteractionResponse(i.Interaction); err == nil {
+		for idx := range options {
+			_ = s.MessageReactionAdd(msg.ChannelID, msg.ID, voteEmojis[idx])
+		}
 	}
 }
 
