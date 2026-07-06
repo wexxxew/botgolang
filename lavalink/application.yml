@@ -46,6 +46,14 @@ lavalink:
 plugins:
   youtube:
     enabled: true
+    # OAuth: Lavalink обращается к YouTube «как залогиненный пользователь».
+    # Лечит ошибку "This video requires login" на серверных IP.
+    # При первом запуске в логах появится код и ссылка для авторизации.
+    oauth:
+      enabled: true
+      # После авторизации Lavalink выведет refreshToken — можно вписать его
+      # в переменную окружения YOUTUBE_OAUTH_REFRESH_TOKEN, чтобы не логиниться заново.
+      refreshToken: "${YOUTUBE_OAUTH_REFRESH_TOKEN:}"
     # Набор «клиентов» YouTube — повышает шанс успешного воспроизведения.
     clients:
       - MUSIC
