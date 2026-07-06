@@ -1,0 +1,9 @@
+# Не тащим в образ секреты и лишнее
+.env
+.git
+.idea
+.vscode
+lavalink/Lavalink.jar
+lavalink/plugins
+lavalink/logs
+*.exe
