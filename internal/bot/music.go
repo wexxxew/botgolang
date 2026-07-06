@@ -125,7 +125,8 @@ func (b *Bot) handlePlay(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	query := optionMap(i)["query"].StringValue()
 	identifier := query
 	if !urlPattern.MatchString(identifier) && !searchPattern.MatchString(identifier) {
-		identifier = lavalink.SearchTypeYouTube.Apply(identifier)
+		// Ищем на SoundCloud: YouTube блокирует запросы с серверных IP.
+		identifier = "scsearch:" + query
 	}
 
 	vs, err := s.State.VoiceState(i.GuildID, i.Member.User.ID)
